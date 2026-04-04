@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Image Generator (Demo)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>🎨 AI Image Generator (Demo)</h1>
+
+<form method="POST">
+    <input type="text" name="prompt" placeholder="Enter image description" required>
+    <button type="submit">Generate Image</button>
+</form>
+
+{% if prompt %}
+    <p><strong>Prompt:</strong> {{ prompt }}</p>
+{% endif %}
+
+{% if image_url %}
+    <h2>Generated Image:</h2>
+    <img src="{{ image_url }}" alt="Generated Image">
+    <p style="color: gray;">(Demo image – no API used)</p>
+{% endif %}
+
+</body>
+</html>

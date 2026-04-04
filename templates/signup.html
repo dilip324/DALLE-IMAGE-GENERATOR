@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - DALLE Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="login-title">Create Account</h1>
+            
+            <!-- Signup Form -->
+            <form method="POST" action="/signup" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Choose a username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter a strong password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        id="confirm_password" 
+                        name="confirm_password" 
+                        placeholder="Confirm your password"
+                        required
+                    >
+                </div>
+
+                {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                {% endif %}
+
+                {% if success_message %}
+                    <div class="success-message">{{ success_message }}</div>
+                {% endif %}
+
+                <button type="submit" class="btn btn-login">
+                    <span>Create Account</span>
+                </button>
+            </form>
+
+            <!-- Back to Login -->
+            <div class="button-group">
+                <button class="btn btn-register" onclick="location.href='/login'" style="grid-column: 1 / -1;">
+                    <span>Back to Login</span>
+                </button>
+            </div>
+
+            <!-- Password Requirements -->
+            <div class="demo-info">
+                <p><strong>Password Requirements:</strong></p>
+                <p>✓ At least 6 characters long</p>
+                <p>✓ Must match confirmation</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add fade-in animation
+        window.addEventListener('load', function() {
+            document.querySelector('.login-box').style.animation = 'fadeIn 0.6s ease-in';
+        });
+    </script>
+</body>
+</html>
